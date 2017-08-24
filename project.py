@@ -45,9 +45,16 @@ def showCatalog():
 @app.route('/catalog/<string:category>/<string:category_item>')
 # @app.route('/catalog/<string:category_item>')
 def showItem(category, category_item):
-    categories = session.query(Categories).filter_by(item=category_item).one()
-    return render_template('item.html', categories=categories)
+    cat = session.query(Categories).filter_by(category=category).one()
+    if cat:
+        item = session.query(Categories).filter_by(item=category_item).one()
+        return render_template('item.html', item=item)
+    else:
+        return error
 
+@app.route('/catalog/<string:category>/<string:category_item>/edit', methods=('GET', 'POST'))
+def editCatalogItem(category, category_item):
+    return
 
 
 # # Create a new restaurant
