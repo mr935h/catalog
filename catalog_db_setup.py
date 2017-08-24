@@ -16,12 +16,12 @@ class Author(Base):
     user_name = Column(String(250), nullable=False)
 
 
-# set up catagories table for catalog database
-class Catagories(Base):
-    __tablename__ = 'catagories'
+# set up categories table for catalog database
+class Categories(Base):
+    __tablename__ = 'categories'
 
     id = Column(Integer, primary_key=True)
-    catagory = Column(String(80), nullable=False)
+    category = Column(String(80), nullable=False)
     item = Column(String(80))
     item_description = Column(String(250))
     author_id = Column(Integer, ForeignKey('authors.id'))

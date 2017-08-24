@@ -1,0 +1,26 @@
+<html>
+<head>
+    <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}
+</head>
+<body>
+<h1>Catalog App</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{message}} </strong> </li>
+        {% endfor%}
+        </ul>
+    {% endif%}
+{% endwith%}
+
+<br>
+
+<h2>{{categories.item}}</h2>
+<p>{{categories.item_description}}
+
+</body>
+
+</html>
