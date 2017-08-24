@@ -5,14 +5,14 @@
 <body>
 <h1> Edit Catalog Item </h1>
 
-<form action="{{url_for('editCatalogItem', restaurant_id=restaurant_id, menu_id=menu_id)}}" method = 'POST'>
+<form action="{{url_for('editCatalogItem', category = category, category_item=category_item)}}" method = 'POST'>
 
 <p>Item:</p>
 
-<input type='text' size='30' name='name' placeholder = {{i.name}}>
+<input type='text' size='30' name='name' placeholder = {{category_item.item}}>
 
 <input type='submit' value='Edit'>
-<a href={{url_for('restaurantMenu', restaurant_id=restaurant_id)}}> Cancel</a>
+<a href={{url_for('showCatalog')}}> Cancel</a>
 
 
 </form>

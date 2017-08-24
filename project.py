@@ -52,9 +52,23 @@ def showItem(category, category_item):
     else:
         return error
 
-@app.route('/catalog/<string:category>/<string:category_item>/edit', methods=('GET', 'POST'))
+@app.route('/catalog/<string:category>/<string:category_item>/edit/', methods=('GET', 'POST'))
 def editCatalogItem(category, category_item):
-    return
+    editedItem = session.query(Categories).filter_by(item=category_item).one()
+#     if 'username' not in login_session:
+#         return redirect('/login')
+#     if editedRestaurant.user_id != login_session['user_id']:
+#         return "<script>function myFunction() {alert('You are not authorized to edit this restaurant. Please create your own restaurant in order to edit.');}</script><body onload='myFunction()''>"
+    # if request.method == 'POST':
+    # if request.form['name']:
+    #     editedItem.item = request.form['name']
+    #     flash('Item Successfully Edited %s' % editedItem.item)
+    #     return redirect(url_for('showCatalog'))
+    # else:
+    #     return render_template('edit_item.html', category_item=category_item)
+    return render_template('edit_item.html', category_item=editedItem)
+
+
 
 
 # # Create a new restaurant
