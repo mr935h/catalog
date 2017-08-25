@@ -46,9 +46,9 @@ def showCatalog():
 @app.route('/catalog/<string:category>/<string:category_item>')
 # @app.route('/catalog/<string:category_item>')
 def showItem(category, category_item):
-    cat = session.query(Categories).filter_by(category=category).one()
+    cat = session.query(Categories).filter_by(category=category, item=category_item).one()
     if cat:
-        item = session.query(Categories).filter_by(item=category_item).one()
+        item = session.query(Categories).filter_by(category=category, item=category_item).one()
         return render_template('item.html', item=item)
     else:
         return error
@@ -57,8 +57,8 @@ def showItem(category, category_item):
 # edit class to change database for items
 @app.route('/catalog/<string:category>/<string:category_item>/edit/', methods=('GET', 'POST'))
 def editCatalogItem(category, category_item):
-    editedItem = session.query(Categories).filter_by(item=category_item).one()
-    category = session.query(Categories).filter_by(category=category).one()
+    editedItem = session.query(Categories).filter_by(category=category, item=category_item).one()
+    category = session.query(Categories).filter_by(category=category, item=category_item).one()
 #     if 'username' not in login_session:
 #         return redirect('/login')
 #     if editedRestaurant.user_id != login_session['user_id']:
@@ -73,8 +73,8 @@ def editCatalogItem(category, category_item):
 
 @app.route('/catalog/<string:category>/<string:category_item>/delete/', methods=('GET', 'POST'))
 def deleteCatalogItem(category, category_item):
-    deleteItem = session.query(Categories).filter_by(item=category_item).one()
-    category = session.query(Categories).filter_by(category=category).one()
+    deleteItem = session.query(Categories).filter_by(category=category, item=category_item).one()
+    category = session.query(Categories).filter_by(category=category, item=category_item).one()
     if request.method == 'POST':
         session.delete(deleteItem)
         # flash('%s Successfully Deleted' % deleteItem.item)
