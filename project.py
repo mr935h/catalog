@@ -35,12 +35,12 @@ session = DBSession()
 @app.route('/')
 @app.route('/catalog/')
 def showCatalog():
-    # categories = session.execute("select * from categories")
-    categories = session.query(Categories).all()
+    categories = session.query(Categories).group_by(Categories.category).all()
+    items = session.query(Categories).all()
     # if 'username' not in login_session:
     #     return render_template('publicrestaurants.html', restaurants=restaurants)
     # else:
-    return render_template('categories.html', categories=categories)
+    return render_template('categories.html', categories=categories, items=items)
 
 
 @app.route('/catalog/<string:category>/<string:category_item>')
