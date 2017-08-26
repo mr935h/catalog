@@ -23,12 +23,6 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-
-
-
-
-
-
 # #############################################
 
 # Show all categories
@@ -82,6 +76,23 @@ def deleteCatalogItem(category, category_item):
         return redirect(url_for('showCatalog'))
     else:
         return render_template('delete_item.html', category=category, category_item=deleteItem)
+
+@app.route('/catalog/new/', methods=('GET', 'POST'))
+def newItem():
+    # if 'username' not in login_session:
+    #     return redirect('/login')
+    if request.method == 'POST':
+        print request.form['category']
+        print request.form['item']
+        print request.form['item_description']
+        newItem=Categories(category=request.form['category'], item=request.form['item'],
+            item_description=request.form['item_description'])
+        session.add(newItem)
+        # flash('New Item %s Successfully Created' % newItem.item)
+        session.commit()
+        return redirect(url_for('showCatalog'))
+    else:
+        return render_template('newItem.html')
 
 # # Create a new restaurant
 
