@@ -109,15 +109,45 @@ def gconnect():
 
     output = ''
     output += '<h1>Welcome, '
-    output += login_session['username']
+    output += login_session['email']
     output += '!</h1>'
     output += '<img src="'
     output += login_session['picture']
     output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
-    flash("you are now logged in as %s" % login_session['username'])
+    flash("you are now logged in as %s" % login_session['email'])
     print "done!"
     return output
 
+
+@app.route('/gdisconnect')
+def gdisconnect():
+    access_token = login_session.get('access_token')
+    if access_token is None:
+        print 'Access Token is None'
+        response = make_response(json.dumps('Current user not connected.'), 401)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+    print 'In gdisconnect access token is %s', access_token
+    print 'User name is: '
+    print login_session['username']
+    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % login_session['access_token']
+    h = httplib2.Http()
+    result = h.request(url, 'GET')[0]
+    print 'result is '
+    print result
+    if result['status'] == '200':
+        del login_session['access_token']
+        del login_session['gplus_id']
+        del login_session['username']
+        del login_session['email']
+        del login_session['picture']
+        response = make_response(json.dumps('Successfully disconnected.'), 200)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+    else:
+        response = make_response(json.dumps('Failed to revoke token for given user.', 400))
+        response.headers['Content-Type'] = 'application/json'
+        return response
 
 
 
@@ -130,7 +160,7 @@ def gconnect():
 def showCatalog():
     categories = session.query(Categories).group_by(Categories.category).all()
     items = session.query(Categories).all()
-    # if 'username' not in login_session:
+    # if 'email' not in login_session:
     #     return render_template('publicrestaurants.html', restaurants=restaurants)
     # else:
     return render_template('categories.html', categories=categories, items=items)
@@ -152,8 +182,8 @@ def showItem(category, category_item):
 def editCatalogItem(category, category_item):
     editedItem = session.query(Categories).filter_by(category=category, item=category_item).one()
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
-#     if 'username' not in login_session:
-#         return redirect('/login')
+    # if 'email' not in login_session:
+    #     return redirect('/login')
 #     if editedRestaurant.user_id != login_session['user_id']:
 #         return "<script>function myFunction() {alert('You are not authorized to edit this restaurant. Please create your own restaurant in order to edit.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
