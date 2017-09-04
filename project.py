@@ -189,7 +189,7 @@ def editCatalogItem(category, category_item):
     if request.method == 'POST':
         if request.form['name']:
             editedItem.item = request.form['name']
-            # flash('Item Successfully Edited %s' % editedItem.item)
+            flash('Item Successfully Edited %s' % editedItem.item)
         return redirect(url_for('showCatalog'))
     else:
         return render_template('edit_item.html', category=category, category_item=editedItem)
@@ -202,7 +202,7 @@ def deleteCatalogItem(category, category_item):
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
     if request.method == 'POST':
         session.delete(deleteItem)
-        # flash('%s Successfully Deleted' % deleteItem.item)
+        flash('%s Successfully Deleted' % deleteItem.item)
         session.commit()
         return redirect(url_for('showCatalog'))
     else:
@@ -219,7 +219,7 @@ def newItem():
         newItem=Categories(category=request.form['category'], item=request.form['item'],
             item_description=request.form['item_description'])
         session.add(newItem)
-        # flash('New Item %s Successfully Created' % newItem.item)
+        flash('New Item %s Successfully Created' % newItem.item)
         session.commit()
         return redirect(url_for('showCatalog'))
     else:
