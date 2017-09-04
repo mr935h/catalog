@@ -23,7 +23,7 @@
           <div id="signInButton">
           <span class="g-signin"
             data-scope="openid email"
-            data-clientid="550354593584-b0nv08m023619v0lrfppj0n9rruddbtp.apps.googleusercontent.com  "
+            data-clientid="550354593584-b0nv08m023619v0lrfppj0n9rruddbtp.apps.googleusercontent.com"
             data-redirecturi="postmessage"
             data-accesstype="offline"
             data-cookiepolicy="single_host_origin"
@@ -50,7 +50,7 @@ function signInCallback(authResult) {
         if (result) {
           $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
          setTimeout(function() {
-          window.location.href = "/restaurant";
+          window.location.href = "/catalog";
          }, 4000);
 
       } else if (authResult['error']) {
