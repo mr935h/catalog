@@ -182,8 +182,8 @@ def showItem(category, category_item):
 def editCatalogItem(category, category_item):
     editedItem = session.query(Categories).filter_by(category=category, item=category_item).one()
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
-    # if 'email' not in login_session:
-    #     return redirect('/login')
+    if 'email' not in login_session:
+        return redirect('/login')
 #     if editedRestaurant.user_id != login_session['user_id']:
 #         return "<script>function myFunction() {alert('You are not authorized to edit this restaurant. Please create your own restaurant in order to edit.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
@@ -196,6 +196,8 @@ def editCatalogItem(category, category_item):
 
 @app.route('/catalog/<string:category>/<string:category_item>/delete/', methods=('GET', 'POST'))
 def deleteCatalogItem(category, category_item):
+    if 'email' not in login_session:
+        return redirect('/login')
     deleteItem = session.query(Categories).filter_by(category=category, item=category_item).one()
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
     if request.method == 'POST':
@@ -208,8 +210,8 @@ def deleteCatalogItem(category, category_item):
 
 @app.route('/catalog/new/', methods=('GET', 'POST'))
 def newItem():
-    # if 'username' not in login_session:
-    #     return redirect('/login')
+    if 'email' not in login_session:
+        return redirect('/login')
     if request.method == 'POST':
         print request.form['category']
         print request.form['item']
