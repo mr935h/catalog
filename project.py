@@ -14,6 +14,7 @@ from sqlalchemy import update
 import requests
 
 
+
 app = Flask(__name__)
 
 CLIENT_ID = json.loads(
@@ -23,7 +24,6 @@ APPLICATION_NAME = "Catalog App"
 # Connect to Database and create database session
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.bind = engine
-
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
@@ -167,7 +167,6 @@ def showCatalog():
 
 
 @app.route('/catalog/<string:category>/<string:category_item>')
-# @app.route('/catalog/<string:category_item>')
 def showItem(category, category_item):
     cat = session.query(Categories).filter_by(category=category, item=category_item).one()
     if cat:
@@ -182,10 +181,11 @@ def showItem(category, category_item):
 def editCatalogItem(category, category_item):
     editedItem = session.query(Categories).filter_by(category=category, item=category_item).one()
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
+    user = session.query(Author).join(Categories).filter_by(item = editedItem.item).one()
     if 'email' not in login_session:
         return redirect('/login')
-#     if editedRestaurant.user_id != login_session['user_id']:
-#         return "<script>function myFunction() {alert('You are not authorized to edit this restaurant. Please create your own restaurant in order to edit.');}</script><body onload='myFunction()''>"
+    if user.user_name != login_session['email']:
+        return "<script>function myFunction() {alert('You are not authorized to edit this item. Please create your own listing in order to edit.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         if request.form['name']:
             editedItem.item = request.form['name']
@@ -200,6 +200,9 @@ def deleteCatalogItem(category, category_item):
         return redirect('/login')
     deleteItem = session.query(Categories).filter_by(category=category, item=category_item).one()
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
+    user = session.query(Author).join(Categories).filter_by(item = deleteItem.item).one()
+    if user.user_name != login_session['email']:
+        return "<script>function myFunction() {alert('You are not authorized to delete this item. Please create your own listing in order to delete.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         session.delete(deleteItem)
         flash('%s Successfully Deleted' % deleteItem.item)
