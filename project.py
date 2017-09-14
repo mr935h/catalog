@@ -13,8 +13,6 @@ from flask import make_response
 from sqlalchemy import update
 import requests
 
-
-
 app = Flask(__name__)
 
 CLIENT_ID = json.loads(
@@ -219,8 +217,19 @@ def newItem():
         print request.form['category']
         print request.form['item']
         print request.form['item_description']
+        user = ''
+        users = session.query(Author).all()
+        for i in users:
+            print i.user_name
+            if i.user_name == login_session['email']:
+                user = i.user_name
+        if not user:
+            newItemuser=Author(name='Michael Ryden', user_name=login_session['email'])
+            session.add(newItemuser)
+            session.commit()
+            user = session.query(Author).filter_by(user_name = login_session['email']).one()
         newItem=Categories(category=request.form['category'], item=request.form['item'],
-            item_description=request.form['item_description'])
+            item_description=request.form['item_description'], author_id=user)
         session.add(newItem)
         flash('New Item %s Successfully Created' % newItem.item)
         session.commit()
