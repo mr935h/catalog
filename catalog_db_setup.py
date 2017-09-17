@@ -24,6 +24,7 @@ class Categories(Base):
     category = Column(String(80), nullable=False)
     item = Column(String(80))
     item_description = Column(String(250))
+    image = Column(String(10000))
     author_id = Column(Integer, ForeignKey('authors.id'))
 
 engine = create_engine('sqlite:///catalog.db')

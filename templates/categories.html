@@ -31,6 +31,9 @@
     {% for x in items %}
         {% if i.category == x.category %}
             <p>
+            <img src="{{x.image}}" alt={{x.item}} width="42" height="42">
+            </p>
+            <p>
             <a href="{{url_for('showItem',category=x.category, category_item=x.item)}}">{{x.item}}</a>
             <a href="{{url_for('editCatalogItem', category=x.category, category_item=x.item)}}">Edit</a>
             <a href="{{url_for('deleteCatalogItem', category=x.category,

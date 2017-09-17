@@ -233,7 +233,8 @@ def newItem():
             session.commit()
             user = session.query(Author).filter_by(user_name = login_session['email']).one()
         newItem=Categories(category=request.form['category'], item=request.form['item'],
-            item_description=request.form['item_description'], author_id=user.id)
+            item_description=request.form['item_description'], image=request.form['item_url'],
+            author_id=user.id)
         session.add(newItem)
         flash('New Item %s Successfully Created' % newItem.item)
         session.commit()
