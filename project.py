@@ -179,6 +179,10 @@ def showItem(category, category_item):
 def editCatalogItem(category, category_item):
     editedItem = session.query(Categories).filter_by(category=category, item=category_item).one()
     category = session.query(Categories).filter_by(category=category, item=category_item).one()
+    # user = session.query(Author).join(Categories).filter_by(item = editedItem.item).one()
+    cat = category
+    item = category_item
+    # users = session.execute("select user_name from Cat_Author where item = '%s' and category = '%s'" % (item, cat))
     user = session.query(Author).join(Categories).filter_by(item = editedItem.item).one()
     if 'email' not in login_session:
         return redirect('/login')
@@ -222,14 +226,14 @@ def newItem():
         for i in users:
             print i.user_name
             if i.user_name == login_session['email']:
-                user = i.user_name
-        if not user:
+                user = i
+        if user == '':
             newItemuser=Author(name='Michael Ryden', user_name=login_session['email'])
             session.add(newItemuser)
             session.commit()
             user = session.query(Author).filter_by(user_name = login_session['email']).one()
         newItem=Categories(category=request.form['category'], item=request.form['item'],
-            item_description=request.form['item_description'], author_id=user)
+            item_description=request.form['item_description'], author_id=user.id)
         session.add(newItem)
         flash('New Item %s Successfully Created' % newItem.item)
         session.commit()
