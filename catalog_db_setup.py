@@ -27,6 +27,16 @@ class Categories(Base):
     image = Column(String(10000))
     author_id = Column(Integer, ForeignKey('authors.id'))
 
+    @property
+    def serialize(self):
+        # Return object data in easily serializeable format
+        return {
+            'id': self.id,
+            'category': self.category,
+            'item': self.item,
+            'item description': self.item_description
+        }
+
 engine = create_engine('sqlite:///catalog.db')
 
 
