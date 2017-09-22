@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite" rel="stylesheet">
 </head>
 <body>
 <h1>Catalog App</h1>
@@ -15,8 +16,6 @@
         </ul>
     {% endif%}
 {% endwith%}
-
-<br>
 
 <h2>Categories</h2>
 <a href="{{url_for('newItem')}}">New Item</a>

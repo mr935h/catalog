@@ -1,10 +1,14 @@
 <html>
+<head>
+    <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite" rel="stylesheet">
+</head>
 <body>
 <h1> New Catalog Item </h1>
 
 <form action="{{url_for('newItem')}}" method = 'POST'>
 
-<p>Category:</p>
+<h3>Category:</h3>
 
 <!-- <input type='text' size='30' name='category'> -->
 <select name='category'>
@@ -21,13 +25,13 @@
     <option value="Other">Other</option>
 </select>
 
-<p>Item:</p>
+<h3>Item:</h3>
 <input type='text' size='30' name='item'>
 
-<p>Image URL:</p>
+<h3>Image URL:</h3>
 <input type='text' size='30' name='item_url'>
 
-<p>Item Description:</p>
+<h3>Item Description:</h3>
 <textarea rows='5' cols='50' name='item_description'></textarea>
 
 <input type='submit' value='Create'>
