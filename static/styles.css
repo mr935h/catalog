@@ -1,8 +1,7 @@
 h1{
-    font-size:36px;
+    font-size:40px;
     font-family: 'Oswald', sans-serif;
 }
-
 h2{
     font-size:30px;
     font-family: 'Oswald', sans-serif;
@@ -11,5 +10,85 @@ h2{
 h3{
     font-size:24px;
     font-family: 'Oswald', sans-serif;
+    text-decoration: underline;
 }
 
+.tag{
+    font-size: 60px;
+}
+
+.outer-container{
+    background: #fff1eb;
+    max-width: 1200px;
+    margin: 10px;
+}
+
+.log-button{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    float: right;
+}
+.login-button {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  background: #99b2f0;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  float: right;
+}
+
+.logout-button {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #e075be;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  float: right;
+}
+
+.item-button {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  background: #99f0e9;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.login-button:hover, .logout-button:hover, .item-button:hover, .change-button:hover{
+  background: #D3D3D3;
+  text-decoration: none;
+}
+
+.change-button{
+  -webkit-border-radius: 15;
+  -moz-border-radius: 15;
+  border-radius: 15px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 10px;
+  background: #cfcfc4;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
+
+.category-picture{
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}

@@ -1,49 +1,65 @@
 <html>
 <head>
-    <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite" rel="stylesheet">
+    <title>Catalog App</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Displays catalog of items for sale">
+    <meta name="author" content="Michael Ryden">
+    <meta name"viewport" content="width=device-width, initial-scale=1">
 </head>
+<nav>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite" rel="stylesheet">
+    <link rel="stylesheet" type=text/css href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" type=text/css href="{{url_for('static', filename='styles.css')}}">
+</nav>
 <body>
-<h1>Catalog App</h1>
+<section class="outer-container">
+    <div class="col-md-12">
+        <div  class="col-md-6">
+            <h1 class="tag">@mila_rose</h1>
+        </div>
+        <div class="col-md-6 log-button">
+            <a href="{{url_for('gdisconnect')}}" class="logout-button">Logout</a>
+            <a href="{{url_for('showLogin')}}" class="login-button">Login</a>
+        </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
 
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{message}} </strong> </li>
+            {% endfor%}
+            </ul>
+        {% endif%}
+    {% endwith%}
+    </div>
 
-        <ul>
-        {% for message in messages %}
-            <li> <strong> {{message}} </strong> </li>
-        {% endfor%}
-        </ul>
-    {% endif%}
-{% endwith%}
+    <h2>Categories</h2>
+    <a href="{{url_for('newItem')}}" class="item-button">New Item</a>
 
-<h2>Categories</h2>
-<a href="{{url_for('newItem')}}">New Item</a>
+    {% for i in categories %}
+    <div>
 
-{% for i in categories %}
+    <h3>{{i.category}}</h3>
+        {% for x in items %}
+            {% if i.category == x.category %}
+                <figure>
+                <img src="{{x.image}}" alt={{x.item}} class="category-picture">
+                </figure>
+                <p>
+                <a href="{{url_for('showItem',category=x.category, category_item=x.item)}}">{{x.item}}</a>
+                </p>
+                <p>
+                <a href="{{url_for('editCatalogItem', category=x.category, category_item=x.item)}}" class="change-button">Edit</a>
+                <a href="{{url_for('deleteCatalogItem', category=x.category,
+                category_item=i.item)}}" class="change-button">Delete</a>
+                </p>
+            {% endif %}
+        {% endfor %}
+    </div>
 
-<div>
 
-<h3>
-{{i.category}}
-</h3>
-    {% for x in items %}
-        {% if i.category == x.category %}
-            <p>
-            <img src="{{x.image}}" alt={{x.item}} width="42" height="42">
-            </p>
-            <p>
-            <a href="{{url_for('showItem',category=x.category, category_item=x.item)}}">{{x.item}}</a>
-            <a href="{{url_for('editCatalogItem', category=x.category, category_item=x.item)}}">Edit</a>
-            <a href="{{url_for('deleteCatalogItem', category=x.category,
-            category_item=i.item)}}">Delete</a>
-            </p>
-        {% endif %}
     {% endfor %}
-</div>
-
-
-{% endfor %}
+</section>
 
 
 
