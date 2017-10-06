@@ -55,7 +55,7 @@
                     <p>
                     <a href="{{url_for('editCatalogItem', category=x.category, category_item=x.item)}}" class="change-button">Edit</a>
                     <a href="{{url_for('deleteCatalogItem', category=x.category,
-                    category_item=i.item)}}" class="change-button">Delete</a>
+                    category_item=x.item)}}" class="change-button">Delete</a>
                     </p>
                 </div>
             {% endif %}
