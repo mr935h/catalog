@@ -21,6 +21,12 @@ h3{
     text-decoration: underline;
 }
 
+.delete-buttons{
+  display:inline;
+  align-self: left;
+  width:20px;
+}
+
 .tag{
     font-size: 60px;
 }
