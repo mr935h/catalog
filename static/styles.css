@@ -1,3 +1,11 @@
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
+body{
+    height:100%; /* force the BODY element to match the height of the HTML element */
+}
+
 h1{
     font-size:40px;
     font-family: 'Oswald', sans-serif;
@@ -21,6 +29,8 @@ h3{
     background: #fff1eb;
     max-width: 1200px;
     margin: 10px;
+    position:absolute;
+    overflow:hidden;
 }
 
 .log-button{
@@ -91,4 +101,8 @@ h3{
 .container {
     width: 1200px;
     margin: 0 auto;
+}
+
+.new-row{
+  width:100%;
 }
