@@ -21,6 +21,10 @@ h3{
     text-decoration: underline;
 }
 
+p{
+    font-size:14px;
+    font-family: 'Oswald', sans-serif;
+}
 .delete-buttons{
   display:inline;
   align-self: left;
@@ -35,7 +39,6 @@ h3{
     background: #fff1eb;
     max-width: 1200px;
     margin: 10px;
-    position:absolute;
     overflow:hidden;
 }
 
