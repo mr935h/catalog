@@ -214,8 +214,11 @@ def editCatalogItem(category, category_item):
     if user.user_name != login_session['email']:
         return "<script>function myFunction() {alert('You are not authorized to edit this item. Please create your own listing in order to edit.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
-        if request.form['name']:
-            editedItem.item = request.form['name']
+        if request.form['item'] and request.form['category'] and request.form['item_url'] and request.form['item_description']:
+            editedItem.item = request.form['item']
+            editedItem.category = request.form['category']
+            editedItem.image = request.form['item_url']
+            editedItem.item_description = request.form['item_description']
             flash('Item Successfully Edited %s' % editedItem.item)
         return redirect(url_for('showCatalog'))
     else:

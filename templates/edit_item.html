@@ -3,13 +3,37 @@
     <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}
 </head>
 <body>
-<h1> Edit Catalog Item </h1>
+<h1> Edit {{category_item.item}} </h1>
 
 <form action="{{url_for('editCatalogItem', category=category.category, category_item=category_item.item)}}" method = 'POST'>
 
-<p>Item:</p>
 
-<input type='text' size='30' name='name' placeholder = {{category_item.item}}>
+<h3>Category:</h3>
+
+<!-- <input type='text' size='30' name='category'> -->
+<select name='category'>
+    <option value="{{category_item.category}}">{{category_item.category}}</option>
+    <option value="Tops">Tops</option>
+    <option value="Accessories">Accessories</option>
+    <option value="Bags">Bags</option>
+    <option value="Dresses">Dresses</option>
+    <option value="Jacket-Coat">Jacket-Coat</option>
+    <option value="Jeans">Jeans</option>
+    <option value="Pants">Pants</option>
+    <option value="Shoes">Shoes</option>
+    <option value="Shorts">Shorts</option>
+    <option value="Sweaters">Sweaters</option>
+    <option value="Other">Other</option>
+</select>
+
+<h3>Item:</h3>
+<input type='text' size='30' name='item' value='{{category_item.item}}'>
+
+<h3>Image URL:</h3>
+<input type='text' size='30' name='item_url' value='{{category_item.image}}'>
+
+<h3>Item Description:</h3>
+<textarea rows='5' cols='50' name='item_description'>{{category_item.item_description}}</textarea>
 
 <input type='submit' value='Edit'>
 <a href={{url_for('showCatalog')}}> Cancel</a>

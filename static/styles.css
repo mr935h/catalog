@@ -115,3 +115,7 @@ p{
 .new-row{
   width:100%;
 }
+
+.item-title{
+  max-width:125px;
+}

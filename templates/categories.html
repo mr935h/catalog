@@ -45,11 +45,11 @@
     </div>
         {% for x in items %}
             {% if i.category == x.category %}
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <figure>
                     <img src="{{x.image}}" alt={{x.item}} class="category-picture">
                     </figure>
-                    <p>
+                    <p class="item-title">
                     <a href="{{url_for('showItem',category=x.category, category_item=x.item)}}">{{x.item}}</a>
                     </p>
                     <p>
