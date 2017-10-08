@@ -15,7 +15,6 @@ class Author(Base):
     name = Column(String(250), nullable=False)
     user_name = Column(String(250), nullable=False)
 
-
 # set up categories table for catalog database
 class Categories(Base):
     __tablename__ = 'categories'
@@ -38,6 +37,5 @@ class Categories(Base):
         }
 
 engine = create_engine('sqlite:///catalog.db')
-
 
 Base.metadata.create_all(engine)

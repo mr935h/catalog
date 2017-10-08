@@ -1,16 +1,13 @@
 <html>
 <head>
-    <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}
+    <link rel=stylesheet type=text/css href={{url_for('static', filename='styles.css')}}>
 </head>
 <body>
-<h1> Edit {{category_item.item}} </h1>
+<h1>Edit {{category_item.item}}</h1>
 
 <form action="{{url_for('editCatalogItem', category=category.category, category_item=category_item.item)}}" method = 'POST'>
 
-
 <h3>Category:</h3>
-
-<!-- <input type='text' size='30' name='category'> -->
 <select name='category'>
     <option value="{{category_item.category}}">{{category_item.category}}</option>
     <option value="Tops">Tops</option>
@@ -37,7 +34,6 @@
 
 <input type='submit' value='Edit'>
 <a href={{url_for('showCatalog')}}> Cancel</a>
-
 </form>
 
 </body>

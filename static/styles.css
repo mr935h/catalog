@@ -1,108 +1,112 @@
-html{
-    min-height:100%;/* make sure it is at least as tall as the viewport */
-    position:relative;
-}
-body{
-    height:100%; /* force the BODY element to match the height of the HTML element */
+html {
+    min-height: 100%; /* make sure it is at least as tall as the viewport */
+    position: relative;
 }
 
-h1{
-    font-size:40px;
-    font-family: 'Oswald', sans-serif;
+body {
+    height: 100%; /* force the BODY element to match the height of the HTML element */
 }
-h2{
-    font-size:30px;
+
+h1 {
+    font-size: 40px;
     font-family: 'Oswald', sans-serif;
 }
 
-h3{
-    font-size:24px;
+h2 {
+    font-size: 30px;
+    font-family: 'Oswald', sans-serif;
+}
+
+h3 {
+    font-size: 24px;
     font-family: 'Oswald', sans-serif;
     text-decoration: underline;
 }
 
-p{
-    font-size:14px;
+p {
+    font-size: 14px;
     font-family: 'Oswald', sans-serif;
 }
-.delete-buttons{
-  display:inline;
-  align-self: left;
-  width:20px;
+
+.delete-buttons {
+    display: inline;
+    align-self: left;
+    width: 20px;
 }
 
-.tag{
+.tag {
     font-size: 60px;
 }
 
-.outer-container{
+.outer-container {
     background: #fff1eb;
     max-width: 1200px;
     margin: 10px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
-.log-button{
+.log-button {
     margin-top: 20px;
     margin-bottom: 10px;
     float: right;
 }
+
 .login-button {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Georgia;
-  color: #ffffff;
-  font-size: 20px;
-  background: #99b2f0;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  float: right;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 20px;
+    background: #99b2f0;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    float: right;
 }
 
 .logout-button {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #e075be;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  float: right;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #e075be;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    float: right;
 }
 
 .item-button {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Georgia;
-  color: #ffffff;
-  font-size: 20px;
-  background: #99f0e9;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 20px;
+    background: #99f0e9;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
 }
 
-.login-button:hover, .logout-button:hover, .item-button:hover, .change-button:hover{
-  background: #D3D3D3;
-  text-decoration: none;
+.login-button:hover, .logout-button:hover, .item-button:hover, .change-button:hover {
+    background: #D3D3D3;
+    text-decoration: none;
 }
 
-.change-button{
-  -webkit-border-radius: 15;
-  -moz-border-radius: 15;
-  border-radius: 15px;
-  font-family: Georgia;
-  color: #ffffff;
-  font-size: 10px;
-  background: #cfcfc4;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
+.change-button {
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 10px;
+    background: #cfcfc4;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
 }
 
-.category-picture{
+.category-picture {
     max-width: 80px;
     max-height: 80px;
 }
@@ -112,10 +116,10 @@ p{
     margin: 0 auto;
 }
 
-.new-row{
-  width:100%;
+.new-row {
+    width: 100%;
 }
 
-.item-title{
-  max-width:125px;
+.item-title {
+    max-width: 125px;
 }
