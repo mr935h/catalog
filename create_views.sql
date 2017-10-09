@@ -1,1 +1,0 @@
-create view Cat_Author as select user_name, category, item from authors, categories where authors.id == categories.author_id
