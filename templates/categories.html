@@ -18,8 +18,11 @@
             <h1 class="tag">@mila_rose</h1>
         </div>
         <div class="col-md-6 log-button">
-            <a href="{{url_for('gdisconnect')}}" class="logout-button">Logout</a>
-            <a href="{{url_for('showLogin')}}" class="login-button">Login</a>
+            {% if 'username' in session %}
+                <a href="{{url_for('gdisconnect')}}" class="logout-button">Logout</a>
+            {% else %}
+                <a href="{{url_for('showLogin')}}" class="login-button">Login</a>
+            {% endif%}
         </div>
 
     <br>
