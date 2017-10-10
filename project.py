@@ -194,6 +194,8 @@ def showItem(category, category_item):
 def editCatalogItem(category, category_item):
     if 'email' not in login_session:
         return redirect('/login')
+    editedItem = session.query(Categories).filter_by(
+                    category=category, item=category_item).one()
     user = session.query(Author).join(Categories).filter_by(
             item=editedItem.item).one()
     if user.user_name != login_session['email']:
@@ -201,16 +203,12 @@ def editCatalogItem(category, category_item):
             'You are not authorized to edit this item.
             Please create your own listing in order to edit.');}</script>
             <body onload='myFunction()''>"""
-        editedItem = session.query(Categories).filter_by(
-                    category=category, item=category_item).one()
     category = session.query(Categories).filter_by(
             category=category, item=category_item).one()
     cat = category
     item = category_item
     if request.method == 'POST':
-        if request.form['item'] and request.form['category'] and
-        request.form['item_url'] and
-        request.form['item_description']:
+        if request.form['item'] and request.form['category'] and request.form['item_url'] and request.form['item_description']:
             editedItem.item = request.form['item']
             editedItem.category = request.form['category']
             editedItem.image = request.form['item_url']
